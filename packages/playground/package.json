@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playground for testing BetterSSE",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node test-client.js"
+  },
+  "dependencies": {
+    "better-sse": "workspace:*"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "thottled-sse-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BetterSSE - Enhanced SSE client library",
+  "scripts": {
+    "build": "pnpm -r --filter=better-sse build",
+    "dev": "pnpm -r --parallel dev",
+    "clean": "pnpm -r exec rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.0",
+  "devDependencies": {
+    "puppeteer": "^24.30.0",
+    "typescript": "^5.9.3"
+  }
+}
