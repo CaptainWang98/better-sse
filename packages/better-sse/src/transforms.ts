@@ -11,22 +11,21 @@ export function createSplitStream(): TransformStream<string, string> {
   let buffer = ''
 
   return new TransformStream<string, string>({
-    async transform(chunk, controller) {
+    transform(chunk, controller) {
       buffer += chunk
       const parts = buffer.split('\n\n')
       // The last part might be incomplete, keep it in buffer
       for (const part of parts.slice(0, -1)) {
         if (isValidString(part)) {
-          // await enqueue to support backpressure propagation
-          await controller.enqueue(part)
+          controller.enqueue(part)
         }
       }
       buffer = parts[parts.length - 1]
     },
-    async flush(controller) {
+    flush(controller) {
       // When stream ends, send remaining buffer
       if (isValidString(buffer)) {
-        await controller.enqueue(buffer)
+        controller.enqueue(buffer)
       }
     },
   })
@@ -38,7 +37,7 @@ export function createSplitStream(): TransformStream<string, string> {
  */
 export function createParseStream(): TransformStream<string, SSEMessage> {
   return new TransformStream<string, SSEMessage>({
-    async transform(partChunk, controller) {
+    transform(partChunk, controller) {
       const lines = partChunk.split('\n')
       let event = 'message'
       let data: string[] = []
@@ -97,8 +96,7 @@ export function createParseStream(): TransformStream<string, SSEMessage> {
         if (retry !== undefined) {
           message.retry = retry
         }
-        // await enqueue to support backpressure propagation
-        await controller.enqueue(message)
+        controller.enqueue(message)
       }
     },
   })
