@@ -14,33 +14,10 @@ English | [中文](./README.zh-CN.md)
 - [ ] **Auto Reconnection** - Automatic reconnection with exponential backoff strategy
 - [ ] **Resume from Breakpoint** - Resume connections using `Last-Event-ID`
 - [x] **Manual Cancellation** - Support for actively aborting connections
+- [ ] **Plugin System** - Register plugins before/after requests to access data
 - [x] **Backpressure Control** - Native backpressure support based on Web Streams API
 - [ ] **TypeScript** - Complete type definitions
 - [x] **Standards Compliant** - Strictly follows [WHATWG SSE Specification](https://html.spec.whatwg.org/multipage/server-sent-events.html#eventsource)
-
-## 📁 Project Structure
-
-```
-thottled-sse/
-├── packages/
-│   ├── better-sse/          # Core SSE library
-│   │   ├── src/             # TypeScript source code
-│   │   │   ├── index.ts           # Main entry, exports useSSEStream
-│   │   │   ├── sse-stream.ts      # BetterSSEStream core implementation
-│   │   │   ├── transforms.ts      # Transform streams (split, parse)
-│   │   │   └── utils.ts           # Utility functions
-│   │   ├── dist/            # Build output
-│   │   └── package.json
-│   └── playground/          # Testing and benchmarks
-│       ├── server.js              # SSE test server
-│       ├── benchmark-headless.js  # Headless browser performance test
-│       ├── benchmark-test.js      # Test logic code
-│       ├── benchmark-runner.html  # Browser performance test page
-│       └── package.json
-├── package.json             # Root package.json
-├── pnpm-workspace.yaml      # Workspace configuration
-└── README.md
-```
 
 ## 📖 Usage Examples
 
